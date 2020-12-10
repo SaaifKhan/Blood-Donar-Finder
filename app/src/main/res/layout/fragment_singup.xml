@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.authentication.singupfragment.SingupFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up Here"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="UserName"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/ed_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/name_tv"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:drawableRight="@drawable/ic_baseline_email"
+            android:fontFamily="@font/poppins"
+            android:hint="Saif Khan"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp" />
+
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_name"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Email"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:drawableRight="@drawable/ic_baseline_lock"
+            android:fontFamily="@font/poppins"
+            android:hint="Example@gmail.com"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp" />
+
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Phone Number"
+            android:layout_below="@id/edEmail"/>
+
+        <EditText
+            android:id="@+id/etNumber"
+            android:drawableRight="@drawable/ic_baseline_phone_android"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="0334-9090910"
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@drawable/rectangle"
+            android:layout_below="@id/tvPhone"/>
+
+
+        <TextView
+            android:layout_below="@id/etNumber"
+            android:layout_marginTop="20dp"
+            android:id="@+id/tvPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@id/tvPass"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:hint="XXXXXX"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@drawable/rectangle"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

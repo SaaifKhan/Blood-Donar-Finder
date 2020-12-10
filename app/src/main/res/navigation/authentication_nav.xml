@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/authentication_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="app.dotinfiny.Bdf.UI.authentication.loginFragment.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_loginFragment_to_singupFragment"
+            app:destination="@id/singupFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotFragment"
+        android:name="app.dotinfiny.Bdf.UI.authentication.forgotpassword.ForgotFragment"
+        android:label="ForgotFragment"/>
+
+    <fragment
+        android:id="@+id/singupFragment"
+        android:name="app.dotinfiny.Bdf.UI.authentication.singupfragment.SingupFragment"
+        android:label="SingupFragment"/>
+
+
+</navigation>

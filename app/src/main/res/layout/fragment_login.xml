@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RlMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/TvlogoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Blood Donar Finder"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TvlogoTitle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/TvlogoTitle"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Login to your Account"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Email"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/ed_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/name_tv"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_email"
+                android:fontFamily="@font/poppins"
+                android:hint="abc@gmail.com"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ed_name"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Password"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/ed_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvPassword"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_lock"
+                android:fontFamily="@font/poppins"
+                android:hint="........"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/Signinbtnripple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ed_password"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                app:mrl_rippleColor="#A6000000">
+
+                <TextView
+                    android:id="@+id/btnSignin"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@id/Signinbtnripple"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_bckground"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="Sign in"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Signinbtnripple"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Forgot Password?"
+                android:textSize="20sp" />
+
+
+            <RelativeLayout
+                android:id="@+id/RlSingup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvForgotPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
+
+
+                <TextView
+                    android:id="@+id/tvSingup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Dont have Account?"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@id/tvSingup"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Sign up"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/RlSingup" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
