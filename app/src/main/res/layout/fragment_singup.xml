@@ -8,33 +8,41 @@
 
     <RelativeLayout
         android:id="@+id/toolBar"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content">
 
 
         <ImageView
+            android:id="@+id/imgClose_signup"
             android:layout_width="30dp"
-            android:paddingStart="2dp"
-            android:layout_alignParentLeft="true"
-            android:paddingEnd="3dp"
+            android:scaleType="center"
+            app:tint="@android:color/black"
+            android:layout_marginLeft="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_arrow_back_ios_"/>
     </RelativeLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolBar">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_below="@id/toolBar"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_height="match_parent">
 
         <TextView
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up Here"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="20sp"/>
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="17sp"/>
 
         <TextView
             android:id="@+id/name_tv"
@@ -51,14 +59,15 @@
             android:id="@+id/ed_name_singup"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:drawableTint="@android:color/black"
             android:layout_below="@+id/name_tv"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle"
-            android:drawableRight="@drawable/ic_baseline_email"
+            android:drawableRight="@drawable/ic_baseline_person"
             android:fontFamily="@font/poppins"
             android:hint="Saif Khan"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:paddingStart="15dp"
             android:paddingEnd="15dp" />
 
@@ -80,9 +89,10 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/tvEmail"
+            android:drawableTint="@android:color/black"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle"
-            android:drawableRight="@drawable/ic_baseline_lock"
+            android:drawableRight="@drawable/ic_baseline_email"
             android:fontFamily="@font/poppins"
             android:hint="Example@gmail.com"
             android:inputType="textEmailAddress"
@@ -92,6 +102,8 @@
 
         <TextView
             android:id="@+id/tvPhone"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -103,6 +115,9 @@
             android:drawableRight="@drawable/ic_baseline_phone_android"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:fontFamily="@font/poppins"
+            android:inputType="phone"
+            android:drawableTint="@android:color/black"
             android:hint="0334-9090910"
             android:layout_marginTop="10dp"
             android:paddingStart="15dp"
@@ -115,6 +130,8 @@
             android:layout_below="@id/etNumber_singup"
             android:layout_marginTop="20dp"
             android:id="@+id/tvPass"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password"/>
@@ -122,10 +139,14 @@
         <EditText
             android:id="@+id/etPassword_singup"
             android:layout_width="match_parent"
+            android:drawableTint="@android:color/black"
             android:layout_below="@id/tvPass"
             android:layout_height="40dp"
+            android:fontFamily="@font/poppins"
+            android:drawableRight="@drawable/ic_baseline_lock"
             android:layout_marginTop="10dp"
-            android:hint="XXXXXX"
+            android:hint="......."
+            android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:background="@drawable/rectangle"/>
@@ -138,33 +159,24 @@
             android:layout_below="@id/etPassword_singup"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             app:mrl_rippleColor="#A6000000">
 
             <TextView
-                android:id="@+id/btnSignin"
+                android:id="@+id/btnSingUp"
+                android:textStyle="bold"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
                 android:layout_below="@id/Signinbtnripple"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_bckground"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
-                android:text="Sign in"
+                android:text="Sign Up"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
         </com.balysv.materialripple.MaterialRippleLayout>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -175,6 +187,7 @@
 
 
 
+    </ScrollView>
 
 
 

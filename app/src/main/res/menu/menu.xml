@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_home"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_Profile"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_AddProfile"
+        android:icon="@drawable/ic_baseline_person"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="Add Profile" />
+
+
+
+
+</menu>
