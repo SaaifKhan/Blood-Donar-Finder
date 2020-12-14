@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.authentication.singupfragment.SingupFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <RelativeLayout
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="50dp">
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:paddingStart="2dp"
+            android:layout_alignParentLeft="true"
+            android:paddingEnd="3dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back_ios_"/>
     </RelativeLayout>
 
 
@@ -39,7 +48,7 @@
 
 
         <EditText
-            android:id="@+id/ed_name"
+            android:id="@+id/ed_name_singup"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/name_tv"
@@ -58,7 +67,7 @@
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ed_name"
+            android:layout_below="@id/ed_name_singup"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_light"
             android:text="Email"
@@ -67,7 +76,7 @@
 
         <EditText
 
-            android:id="@+id/edEmail"
+            android:id="@+id/edEmail_singup"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/tvEmail"
@@ -87,10 +96,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Phone Number"
-            android:layout_below="@id/edEmail"/>
+            android:layout_below="@id/edEmail_singup"/>
 
         <EditText
-            android:id="@+id/etNumber"
+            android:id="@+id/etNumber_singup"
             android:drawableRight="@drawable/ic_baseline_phone_android"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -103,7 +112,7 @@
 
 
         <TextView
-            android:layout_below="@id/etNumber"
+            android:layout_below="@id/etNumber_singup"
             android:layout_marginTop="20dp"
             android:id="@+id/tvPass"
             android:layout_width="match_parent"
@@ -111,6 +120,7 @@
             android:text="Password"/>
 
         <EditText
+            android:id="@+id/etPassword_singup"
             android:layout_width="match_parent"
             android:layout_below="@id/tvPass"
             android:layout_height="40dp"
@@ -119,6 +129,32 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:background="@drawable/rectangle"/>
+
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/Signinbtnripple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etPassword_singup"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            app:mrl_rippleColor="#A6000000">
+
+            <TextView
+                android:id="@+id/btnSignin"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/Signinbtnripple"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/btn_bckground"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Sign in"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
 
 
 
