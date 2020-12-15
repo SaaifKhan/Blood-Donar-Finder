@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/toolbarProfileDetail"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back_ios_"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentStart="true"
+           />
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImgProfileDetails"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/toolbarProfileDetail"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_person" />
+
+
+    <TextView
+        android:layout_below="@id/toolbarProfileDetail"
+        android:id="@+id/bloodGroupProfileDetail"
+        android:layout_width="60dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:background="@drawable/circleoutline"
+        android:layout_alignParentEnd="true"
+        android:text="A+"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="60dp"/>
+
+    <LinearLayout
+        android:layout_below="@id/profileImgProfileDetails"
+        android:id="@+id/LinearNameProfileDetail"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/Name"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="May Miller"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/area"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last time Donate"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/Relative2ProfileDetail"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:layout_below="@id/LinearNameProfileDetail"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/LinearDonate"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvdonateProfileDetail"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_height="wrap_content"
+            android:text="Donate"/>
+
+        <TextView
+            android:id="@+id/tvNumofDonateProfileDetail"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_light"
+            android:layout_height="wrap_content"
+            android:text="10"/>
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:layout_height="50dp">
+
+
+            <TextView
+                android:id="@+id/tvDonorProfileDetail"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Donor"/>
+
+
+            <TextView
+                android:id="@+id/NumofDonorProfileDetail"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_height="wrap_content"
+                android:text="5"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:id="@+id/tabProfileDetail"
+        android:layout_below="@id/Relative2ProfileDetail"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="@android:color/black"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="@android:color/black"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        app:tabTextColor="#afafaf"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_below="@id/tabProfileDetail"
+        android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

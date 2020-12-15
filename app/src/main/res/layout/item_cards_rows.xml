@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="4dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:id="@+id/relativeCircularImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImg"
+            android:layout_centerVertical="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_baseline_person"
+            app:civ_border_width="2dp" />
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_toEndOf="@+id/profileImg"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:id="@+id/LinearName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/Name"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="May Miller"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/area"
+            android:fontFamily="@font/poppins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karachi"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/donorReceiver"
+            android:layout_width="80dp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="10dp"
+            android:text="Donar"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="@android:color/white"
+            android:layout_height="25dp"
+            android:background="@drawable/rectange_donar_receiver"
+            android:layout_alignParentRight="true"/>
+
+
+
+        <TextView
+            android:id="@+id/bloodGroup"
+            android:layout_width="40dp"
+            android:fontFamily="@font/poppins_light"
+            android:background="@drawable/circleoutline"
+            android:layout_alignParentEnd="true"
+            android:text="A+"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="40dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
+
+
+

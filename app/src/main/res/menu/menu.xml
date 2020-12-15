@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home"
         android:title="Home" />
 
     <item
-        android:id="@+id/navigation_Profile"
+        android:id="@+id/addRequestFragment"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="" />
 
     <item
-        android:id="@+id/navigation_AddProfile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_baseline_person"
         android:enabled="true"
         app:showAsAction="ifRoom"

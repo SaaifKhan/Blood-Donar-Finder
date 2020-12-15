@@ -2,12 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav"
-    app:startDestination="@id/loginFragment2">
+    app:startDestination="@id/homeFragment">
+
 
     <fragment
-        android:id="@+id/loginFragment2"
-        android:name="app.dotinfiny.Bdf.UI.authentication.loginFragment.LoginFragment"
-        android:label="LoginFragment" />
+        android:id="@+id/homeFragment"
+        android:name="app.dotinfiny.Bdf.UI.homeFragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileDetail"
+            app:destination="@id/profileDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/addRequestFragment"
+        android:name="app.dotinfiny.Bdf.UI.addrequestfragment.AddRequestFragment"
+        android:label="AddRequestFragment" />
+    <fragment
+        android:id="@+id/profileDetail"
+        android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
+        android:label="ProfileDetail" />
 
 
 </navigation>
