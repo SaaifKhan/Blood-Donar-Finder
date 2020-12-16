@@ -18,6 +18,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_recyclerViewChildDetail"
             android:layout_width="match_parent"
+            android:nestedScrollingEnabled="false"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

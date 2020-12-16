@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -21,6 +23,7 @@ public class ProfileDetail extends Fragment {
     ViewPager2 myViewPager2;
     ViewPagerAdapter myAdapter;
     TabLayout tabLayout;
+    ImageView BackButton;
 
 
     @Override
@@ -28,6 +31,9 @@ public class ProfileDetail extends Fragment {
         super.onCreate(savedInstanceState);
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+
 
 
     }
@@ -56,14 +62,24 @@ public class ProfileDetail extends Fragment {
     }
 
     private void clickListener() {
+       BackButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Navigation.findNavController(v).navigate(R.id.action_profileDetail_to_homeFragment);
+
+           }
+       });
+
 
 
     }
 
     private void init(View view) {
+        BackButton = view.findViewById(R.id.backBtnProfileDetail);
         tabLayout = view.findViewById(R.id.tabProfileDetail);
         myViewPager2 = view.findViewById(R.id.view_pager);
         myViewPager2.setOffscreenPageLimit(2);
+      //  myViewPager2.setUserInputEnabled(false);
         myAdapter = new ViewPagerAdapter(this);
         myViewPager2.setAdapter(myAdapter);
 

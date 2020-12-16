@@ -12,6 +12,11 @@
         <action
             android:id="@+id/action_homeFragment_to_profileDetail"
             app:destination="@id/profileDetail" />
+        <action
+            android:id="@+id/action_homeFragment_self"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -24,7 +29,16 @@
     <fragment
         android:id="@+id/profileDetail"
         android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
-        android:label="ProfileDetail" />
+        android:label="ProfileDetail" >
+        <action
+            android:id="@+id/action_profileDetail_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_profileDetail_pop"
+            app:popUpTo="@id/profileDetail"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 
 </navigation>
