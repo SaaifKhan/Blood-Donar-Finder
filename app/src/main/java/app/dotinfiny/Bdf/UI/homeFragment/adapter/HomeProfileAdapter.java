@@ -28,7 +28,6 @@ public class HomeProfileAdapter extends RecyclerView.Adapter<HomeProfileAdapter.
 
     }
 
-
     public HomeProfileAdapter(CLickListener cLickListener) {
         this.cLickListener = cLickListener;
     }

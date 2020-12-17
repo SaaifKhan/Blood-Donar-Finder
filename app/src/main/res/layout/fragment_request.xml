@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+    android:id="@+id/toolBar"
+    android:layout_marginTop="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imgClose_signup"
+        android:layout_width="30dp"
+        android:scaleType="center"
+        app:tint="@android:color/black"
+        android:layout_marginLeft="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_arrow_back_ios_"/>
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request For Blood"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/UserNameBloodRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="UserName"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/EtUsernameBloodRequest"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableTint="@android:color/black"
+            android:layout_below="@+id/UserNameBloodRequest"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:drawableRight="@drawable/ic_baseline_person"
+            android:fontFamily="@font/poppins"
+            android:hint="Saif Khan"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/TvRequiredBloodGroup"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/EtUsernameBloodRequest"
+            android:layout_height="wrap_content"
+            android:text="Required Blood Group"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/RecyclerViewBloodGroup"
+            tools:itemCount="8"
+            tools:listitem="@layout/items_rows_blood_group"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_below="@id/TvRequiredBloodGroup"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/TvDescription_Request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/RecyclerViewBloodGroup"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Description"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <EditText
+
+            android:id="@+id/edEmail_singup"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/TvDescription_Request"
+            android:drawableTint="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:fontFamily="@font/poppins"
+            android:hint="Description"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
