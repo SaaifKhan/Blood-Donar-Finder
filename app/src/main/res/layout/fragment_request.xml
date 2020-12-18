@@ -1,146 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <RelativeLayout
-    android:id="@+id/toolBar"
-    android:layout_marginTop="30dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/imgClose_signup"
-        android:layout_width="30dp"
-        android:scaleType="center"
-        app:tint="@android:color/black"
-        android:layout_marginLeft="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_arrow_back_ios_"/>
-</RelativeLayout>
-
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_below="@id/toolBar"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
-
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Request For Blood"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="17sp"/>
-
-        <TextView
-            android:id="@+id/UserNameBloodRequest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="UserName"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-
-        <EditText
-            android:id="@+id/EtUsernameBloodRequest"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableTint="@android:color/black"
-            android:layout_below="@+id/UserNameBloodRequest"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle"
-            android:drawableRight="@drawable/ic_baseline_person"
-            android:fontFamily="@font/poppins"
-            android:hint="Saif Khan"
-            android:inputType="textPersonName"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/TvRequiredBloodGroup"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/EtUsernameBloodRequest"
-            android:layout_height="wrap_content"
-            android:text="Required Blood Group"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/RecyclerViewBloodGroup"
-            tools:itemCount="8"
-            tools:listitem="@layout/items_rows_blood_group"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_below="@id/TvRequiredBloodGroup"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/TvDescription_Request"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/RecyclerViewBloodGroup"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="Description"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-        <EditText
-
-            android:id="@+id/edEmail_singup"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/TvDescription_Request"
-            android:drawableTint="@android:color/black"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle"
-            android:fontFamily="@font/poppins"
-            android:hint="Description"
-            android:inputType="textEmailAddress"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <ImageView
+            android:id="@+id/imgBackRequest"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_back_ios_"
+            app:tint="@android:color/black" />
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolBar">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolBar"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="visible">
+
+
+            <TextView
+                android:id="@id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Request For Blood"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/UserNameBloodRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="UserName"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/EtUsernameBloodRequest"
+                android:layout_width="match_parent"
+                android:text="Saif Khan"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:layout_below="@+id/UserNameBloodRequest"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/rectangle"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/TvBloodGroupDonar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtUsernameBloodRequest"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Blood Group"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/BloodGroupofDonar"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:text="Blood is A+"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:layout_below="@+id/TvBloodGroupDonar"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/rectangle"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/TvRequiredBloodGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_below="@id/BloodGroupofDonar"
+                android:layout_marginTop="10dp"
+                android:text="Required Blood Group" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerViewBloodGroup"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TvRequiredBloodGroup"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="8"
+                tools:listitem="@layout/items_rows_blood_group" />
+
+            <TextView
+                android:id="@+id/tvErrorBlood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RecyclerViewBloodGroup"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please Select Blood"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/TvDescription_Request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvErrorBlood"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Detail"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/EdDescRequest"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/TvDescription_Request"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins"
+                android:hint="Detail"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/tvErrorDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/EdDescRequest"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please write Detail"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/tvHospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvErrorDesc"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Hospitals"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/Hospitals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvHospital"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins"
+                android:hint="hospitals"
+                android:inputType="none"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/Hospitals"
+                android:layout_height="wrap_content"
+                app:el_duration="1000"
+                app:el_expanded="true"
+                app:el_parallax="0.5">
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/recyclerviewHospitals"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/layout_row_items_hospitals"
+                android:layout_below="@id/expandable_layout"
+                android:layout_height="match_parent">
+
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tvErrorHospital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recyclerviewHospitals"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please Select Hospital"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/TvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvErrorHospital"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Location"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/LocationRequestBlood"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/TvLocation"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_add_location_24"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:hint="Add your location here"
+                android:inputType="none"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp" />
+
+            <TextView
+                android:id="@+id/tvErrorLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LocationRequestBlood"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please Select Location"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/RippleSubmitRequestForBlood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvErrorLocation"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="16dp"
+                app:mrl_rippleColor="#A6000000">
+
+                <TextView
+                    android:id="@+id/btnSubmitRequestBlood"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@id/RippleSubmitRequestForBlood"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_bckground"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/RippleSubmitRequestForBlood" />
+        </RelativeLayout>
+
+    </ScrollView>
 
 
 
 
-
-
-
-
-
-
-
-
-    </RelativeLayout>
+</RelativeLayout>

@@ -64,7 +64,7 @@
                 app:mrl_rippleColor="#A6000000">
 
                 <TextView
-                    android:id="@+id/btnSignin"
+                    android:id="@+id/btnDonarRequest"
                     android:layout_width="200dp"
                     android:layout_height="45dp"
                     android:layout_below="@id/Signinbtnripple"
@@ -73,7 +73,7 @@
                     android:background="@drawable/btn_bckground"
                     android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="Request For Receiver"
+                    android:text="Request For Blood"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </com.balysv.materialripple.MaterialRippleLayout>

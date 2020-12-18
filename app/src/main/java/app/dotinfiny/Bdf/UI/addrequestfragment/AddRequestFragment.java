@@ -5,15 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import app.dotinfiny.Bdf.R;
 
 
 public class AddRequestFragment extends Fragment {
+    TextView btnRequestForBlood, btnDonar;
 
 
     @Override
@@ -42,11 +46,28 @@ public class AddRequestFragment extends Fragment {
     }
 
     private void clickListener() {
+        btnRequestForBlood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(AddRequestFragmentDirections.actionAddRequestFragmentToRequestFragment(true));
+
+
+            }
+        });
+
+        btnDonar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(AddRequestFragmentDirections.actionAddRequestFragmentToRequestFragment(false));
+            }
+        });
 
 
     }
 
     private void init(View view) {
+        btnRequestForBlood = view.findViewById(R.id.btnRequestforDonar);
+        btnDonar = view.findViewById(R.id.btnDonarRequest);
 
     }
 }

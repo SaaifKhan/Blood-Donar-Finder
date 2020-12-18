@@ -25,10 +25,17 @@
     <fragment
         android:id="@+id/addRequestFragment"
         android:name="app.dotinfiny.Bdf.UI.addrequestfragment.AddRequestFragment"
-        android:label="AddRequestFragment" />
+        android:label="AddRequestFragment" >
+        <action
+            android:id="@+id/action_addRequestFragment_to_requestFragment"
+            app:destination="@id/requestFragment" >
+        </action>
+
+
+    </fragment>
     <fragment
         android:id="@+id/profileDetail"
-        android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
+        android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
         android:label="ProfileDetail" >
         <action
             android:id="@+id/action_profileDetail_to_homeFragment"
@@ -38,6 +45,15 @@
             android:id="@+id/action_profileDetail_pop"
             app:popUpTo="@id/profileDetail"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="app.dotinfiny.Bdf.UI.addrequestfragment.RequestFragment"
+        android:label="RequestFragment" >
+        <argument
+            android:name="isDonar"
+            app:argType="boolean"/>
+
     </fragment>
 
 
