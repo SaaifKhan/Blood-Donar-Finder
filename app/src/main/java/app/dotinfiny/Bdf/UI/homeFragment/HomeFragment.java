@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
         homeProfileAdapter = new HomeProfileAdapter(new HomeProfileAdapter.CLickListener() {
             @Override
             public void onClick(int position) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_profileDetail);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_profileDetail2);
 
             }
         });

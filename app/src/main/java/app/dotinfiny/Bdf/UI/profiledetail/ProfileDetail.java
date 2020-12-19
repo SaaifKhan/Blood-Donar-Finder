@@ -65,7 +65,7 @@ public class ProfileDetail extends Fragment {
        BackButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Navigation.findNavController(v).navigate(R.id.action_profileDetail_to_homeFragment);
+               Navigation.findNavController(v).popBackStack();
 
            }
        });

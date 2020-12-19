@@ -10,18 +10,9 @@
         android:name="app.dotinfiny.Bdf.UI.homeFragment.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_profileDetail"
+            android:id="@+id/action_homeFragment_to_profileDetail2"
             app:destination="@id/profileDetail" />
-        <action
-            android:id="@+id/action_homeFragment_self"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_close_exit" />
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
-        android:label="ProfileFragment" />
     <fragment
         android:id="@+id/addRequestFragment"
         android:name="app.dotinfiny.Bdf.UI.addrequestfragment.AddRequestFragment"
@@ -34,27 +25,18 @@
 
     </fragment>
     <fragment
-        android:id="@+id/profileDetail"
-        android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
-        android:label="ProfileDetail" >
-        <action
-            android:id="@+id/action_profileDetail_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:exitAnim="@anim/fragment_fade_exit" />
-        <action
-            android:id="@+id/action_profileDetail_pop"
-            app:popUpTo="@id/profileDetail"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
         android:id="@+id/requestFragment"
         android:name="app.dotinfiny.Bdf.UI.addrequestfragment.RequestFragment"
-        android:label="RequestFragment" >
+        android:label="RequestFragment">
         <argument
             android:name="isDonar"
-            app:argType="boolean"/>
+            app:argType="boolean" />
 
     </fragment>
+    <fragment
+        android:id="@+id/profileDetail"
+        android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
+        android:label="ProfileDetail" />
 
 
 </navigation>

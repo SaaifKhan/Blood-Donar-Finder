@@ -20,8 +20,15 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import app.dotinfiny.Bdf.R;
 import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.BloodGroupAdapter;
+import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.HospitalsAdapter;
+import app.dotinfiny.Bdf.UI.addrequestfragment.model.HospitalModel;
 
 
 public class RequestFragment extends Fragment {
@@ -34,8 +41,12 @@ public class RequestFragment extends Fragment {
     TextView TvName;
     TextView title;
     TextView btnReqBlood;
-    TextView TextViewBloodForDonar,BloodGroupOfDonar;
+    TextView TextViewBloodForDonar, BloodGroupOfDonar;
     TextView TvError, TvErrorLocations, TvErrorHospital;
+    RecyclerView HospitalListRecyclerview;
+    HospitalsAdapter hospitalsAdapter;
+    ExpandableLayout expandableLayout;
+    //  List<HospitalModel> hospitalModelList = new ArrayList<>();
 
 
     @Override
@@ -43,6 +54,7 @@ public class RequestFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // Drawable error = TvError.getBackground(R.drawable.error_drawable,);
+
 
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -53,6 +65,8 @@ public class RequestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         bloodGroupAdapter = new BloodGroupAdapter(new BloodGroupAdapter.CLickListener() {
             @Override
             public void onClick(int position) {
@@ -73,7 +87,7 @@ public class RequestFragment extends Fragment {
         clickListener();
         checkEdittextWatcher(TvDesc, TvError);
         checkEdittextWatcher(TvHospitals, TvErrorHospital);
-         checkEdittextWatcher(Tvlocation,TvErrorLocations);
+        checkEdittextWatcher(Tvlocation, TvErrorLocations);
         RequestFragmentArgs args = RequestFragmentArgs.fromBundle(getArguments());
         Toast.makeText(getContext(), "It Donor " + args.getIsDonar(), Toast.LENGTH_SHORT).show();
         if (args.getIsDonar()) {
@@ -91,11 +105,26 @@ public class RequestFragment extends Fragment {
     }
 
     private void clickListener() {
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(bloodGroupAdapter);
 
+
+        HospitalListRecyclerview.setHasFixedSize(true);
+        hospitalsAdapter = new HospitalsAdapter(HospitalName(), new HospitalsAdapter.CLickListener() {
+            @Override
+            public void onClick(int position) {
+                HospitalModel model = HospitalName().get(position);
+                TvHospitals.setText(model.getHospitalName());
+                expandableLayout.setExpanded(false, true);
+            }
+        });
+        HospitalListRecyclerview.setAdapter(hospitalsAdapter);
+
+
 //        recyclerViewDonar.setHasFixedSize(true);
-  //      recyclerViewDonar.setAdapter(bloodGroupAdapter);
+        //      recyclerViewDonar.setAdapter(bloodGroupAdapter);
 
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +155,14 @@ public class RequestFragment extends Fragment {
         });
 
 
+        TvHospitals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                expandableLayout.setExpanded(!expandableLayout.isExpanded(), true);
+            }
+        });
+
+
     }
 
     private void init(View view) {
@@ -145,6 +182,8 @@ public class RequestFragment extends Fragment {
         TextViewBloodForDonar = view.findViewById(R.id.TvBloodGroupDonar);
         BloodGroupOfDonar = view.findViewById(R.id.BloodGroupofDonar);
         RequiredBloodGroupOfReceiver = view.findViewById(R.id.TvRequiredBloodGroup);
+        HospitalListRecyclerview = view.findViewById(R.id.recyclerviewHospitals);
+        expandableLayout = view.findViewById(R.id.expandable_layout);
     }
 
 
@@ -177,6 +216,16 @@ public class RequestFragment extends Fragment {
             }
         });
 
+    }
+
+    public List<HospitalModel> HospitalName() {
+        final List<HospitalModel> list = new ArrayList<>();
+
+        list.add(new HospitalModel(1, "Liaquat National"));
+        list.add(new HospitalModel(2, "Aga khan"));
+        list.add(new HospitalModel(3, "abc"));
+
+        return list;
     }
 
 
