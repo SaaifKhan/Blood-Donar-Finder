@@ -19,7 +19,7 @@
         android:icon="@drawable/ic_baseline_person"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Add Profile" />
+        android:title="Profile" />
 
 
 

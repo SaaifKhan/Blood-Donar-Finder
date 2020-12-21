@@ -92,7 +92,7 @@ public class RequestFragment extends Fragment {
         Toast.makeText(getContext(), "It Donor " + args.getIsDonar(), Toast.LENGTH_SHORT).show();
         if (args.getIsDonar()) {
 
-            title.setText("Request to be Donar");
+            title.setText("Become Donar");
             TextViewBloodForDonar.setVisibility(View.VISIBLE);
             BloodGroupOfDonar.setVisibility(View.VISIBLE);
 
@@ -144,7 +144,7 @@ public class RequestFragment extends Fragment {
                             setErrorMessage(TvErrorLocations, Tvlocation);
                         }
                     } else {
-                        setErrorMessage(TvErrorLocations, TvHospitals);
+                        setErrorMessage(TvErrorHospital, TvHospitals);
                     }
                 } else {
                     setErrorMessage(TvError, TvDesc);
@@ -222,6 +222,8 @@ public class RequestFragment extends Fragment {
         final List<HospitalModel> list = new ArrayList<>();
 
         list.add(new HospitalModel(1, "Liaquat National"));
+        list.add(new HospitalModel(2, "Aga khan"));
+        list.add(new HospitalModel(2, "Aga khan"));
         list.add(new HospitalModel(2, "Aga khan"));
         list.add(new HospitalModel(3, "abc"));
 

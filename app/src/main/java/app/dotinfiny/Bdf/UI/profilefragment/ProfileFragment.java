@@ -5,15 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import app.dotinfiny.Bdf.R;
 
 
 public class ProfileFragment extends Fragment {
+
+    ViewPager2 myViewPager2MyProfile;
+    ProfileViewPagerAdapter profileViewPagerAdapter;
+    TabLayout tabLayoutmyProfile;
+    ImageView BackButtonmyProfile;
 
 
     @Override
@@ -47,6 +57,29 @@ public class ProfileFragment extends Fragment {
     }
 
     private void init(View view) {
+
+        BackButtonmyProfile = view.findViewById(R.id.backBtn_myProfile);
+        tabLayoutmyProfile = view.findViewById(R.id.tabs_myProfile);
+        myViewPager2MyProfile = view.findViewById(R.id.view_pager_myprofile);
+        myViewPager2MyProfile.setOffscreenPageLimit(2);
+        //  myViewPager2.setUserInputEnabled(false);
+        profileViewPagerAdapter = new ProfileViewPagerAdapter(this);
+        myViewPager2MyProfile.setAdapter(profileViewPagerAdapter);
+
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayoutmyProfile, myViewPager2MyProfile, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                if (position == 0) {
+                    tab.setText("Request");
+
+                } else if (position > 0) {
+                    tab.setText("Request");
+
+                }
+
+            }
+        });
+        tabLayoutMediator.attach();
 
     }
 }

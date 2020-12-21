@@ -37,6 +37,10 @@
         android:id="@+id/profileDetail"
         android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
         android:label="ProfileDetail" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
+        android:label="ProfileFragment" />
 
 
 </navigation>

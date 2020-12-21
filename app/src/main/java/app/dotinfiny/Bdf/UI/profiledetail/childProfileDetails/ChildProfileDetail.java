@@ -53,7 +53,6 @@ public class ChildProfileDetail extends Fragment {
     private void init(View view) {
         recyclerView = view.findViewById(R.id.item_recyclerViewChildDetail);
         childProfileAdapter = new ChildProfileAdapter();
-
         recyclerView.setAdapter(childProfileAdapter);
         childProfileAdapter.notifyDataSetChanged();
 
