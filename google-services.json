@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1053558690687",
+    "project_id": "blood-donor-finder-4c082",
+    "storage_bucket": "blood-donor-finder-4c082.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053558690687:android:cf8f5acdf9b102b084804a",
+        "android_client_info": {
+          "package_name": "app.dotinfiny.Bdf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053558690687-qmh2a0qtn9mqnev3o8hlcu17gniqv41h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADgomVAS1bbA4LsePuGnO03JDNSih1gm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053558690687-qmh2a0qtn9mqnev3o8hlcu17gniqv41h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

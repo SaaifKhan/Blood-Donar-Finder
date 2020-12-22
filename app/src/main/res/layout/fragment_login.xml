@@ -66,10 +66,22 @@
 
 
             <TextView
-                android:id="@+id/tvPassword"
+                android:id="@+id/tvErrorEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ed_name"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please write Email"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvErrorEmail"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_light"
                 android:text="Password"
@@ -87,17 +99,29 @@
                 android:drawableRight="@drawable/ic_baseline_lock"
                 android:drawableTint="@android:color/black"
                 android:fontFamily="@font/poppins"
-                android:hint="........"
+                android:hint="..."
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/tvErrorPasswordLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ed_password"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please write Password"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
 
 
             <com.balysv.materialripple.MaterialRippleLayout
                 android:id="@+id/Signinbtnripple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ed_password"
+                android:layout_below="@id/tvErrorPasswordLogin"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
