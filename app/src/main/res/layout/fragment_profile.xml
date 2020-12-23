@@ -33,6 +33,16 @@
             android:src="@drawable/ic_arrow_back_ios_"
             app:tint="@android:color/black" />
 
+
+        <ImageView
+            android:id="@+id/SettingProfile"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:padding="3dp"
+            android:src="@drawable/ic_baseline_settings"
+            app:tint="@android:color/black" />
+
     </RelativeLayout>
 
 

@@ -21,7 +21,7 @@ public class HospitalsAdapter extends RecyclerView.Adapter<HospitalsAdapter.View
 
 
     // private List<HospitalModel> hospitalModels;
-    List<HospitalModel> hospitalModels = new ArrayList<>();
+    List<HospitalModel> hospitalModels;
 
 
     public HospitalsAdapter(List<HospitalModel> hospitalModels, CLickListener cLickListener) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
     app:startDestination="@id/homeFragment">
 
@@ -8,10 +9,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="app.dotinfiny.Bdf.UI.homeFragment.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_profileDetail2"
             app:destination="@id/profileDetail" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingProfileFragment"
+            app:destination="@id/settingProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addRequestFragment"
@@ -41,6 +45,15 @@
         android:id="@+id/profileFragment"
         android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/settingProfileFragment"
+        android:name="app.dotinfiny.Bdf.UI.settingpofilefragment.SettingProfileFragment"
+        android:label="fragment_setting_profile"
+        tools:layout="@layout/fragment_setting_profile">
+        <action
+            android:id="@+id/action_settingProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 
 </navigation>

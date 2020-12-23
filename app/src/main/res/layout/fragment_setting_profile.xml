@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.settingpofilefragment.SettingProfileFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_myProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingEnd="20dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_arrow_back_ios_" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/toolbar_myProfileSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/SettingProfileFragmentPicture"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/ic_baseline_person"
+            app:civ_border_width="2dp"></de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/bloodGroupProfileDetail"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/ic_baseline_add"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:padding="1dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:visibility="visible"
+            app:tint="@android:color/black" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative2">
+
+        <RelativeLayout
+            android:id="@+id/Relative3MainBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relative2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp">
+
+
+            <TextView
+                android:id="@+id/TvRequiredBloodGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Required Blood Group"
+                android:textColor="@android:color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerViewBloodGroupprofilesetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TvRequiredBloodGroup"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="8"
+                tools:listitem="@layout/items_rows_blood_group_profile_setting_fragment" />
+
+
+            <TextView
+                android:id="@+id/name_tv_Profilesetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RecyclerViewBloodGroupprofilesetting"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="UserName"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/ed_name_profilesetting"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/name_tv_Profilesetting"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_person"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins"
+                android:hint="Saif Khan"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/TvErrorUsername_profilesetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ed_name_profilesetting"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please write Username"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TvErrorUsername_profilesetting"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Email"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/edEmail_profilesetting"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvEmail"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_email"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@android:color/black" />
+
+
+            <TextView
+                android:id="@+id/tvPhone_profilesetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edEmail_profilesetting"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Phone Number"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etNumber_profilesetting"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvPhone_profilesetting"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle"
+                android:drawableRight="@drawable/ic_baseline_phone_android"
+                android:drawableTint="@android:color/black"
+                android:fontFamily="@font/poppins"
+                android:hint="0334-9090910"
+                android:inputType="phone"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/tvErrorPhone_profilesetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etNumber_profilesetting"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="Please write PhoneNumber"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/Submitbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvErrorPhone_profilesetting"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="17dp"
+                app:mrl_rippleColor="#A6000000">
+
+                <TextView
+                    android:id="@+id/Submit_profile_settings"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@id/Signinbtnripple"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_bckground"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/Submitbtn" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

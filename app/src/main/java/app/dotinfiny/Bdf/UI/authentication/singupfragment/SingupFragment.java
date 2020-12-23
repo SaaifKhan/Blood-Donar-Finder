@@ -1,6 +1,8 @@
 package app.dotinfiny.Bdf.UI.authentication.singupfragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -37,17 +39,23 @@ import java.util.Map;
 
 import app.dotinfiny.Bdf.MainActivity;
 import app.dotinfiny.Bdf.R;
+import app.dotinfiny.Bdf.UI.authentication.AuthenticationActivity;
+import app.dotinfiny.Bdf.UI.authentication.loginFragment.LoginFragment;
 
 
 public class SingupFragment<postListener> extends Fragment {
 
-    EditText EtUserName, EtEmail, EtPassword, EtPhone;
+    private static final String IS_USER_LOGIN = "IsUserLoggedIn";
     TextView btnSingup;
     ImageView imgClose;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     TextView ErrorUsername, errorPhone, errorPassword, errorEmail;
     private FirebaseAuth mAuth;
+    // private static final int MODE_PRIVATE = 1 ;
+    EditText EtUserName, EtEmail, EtPassword, EtPhone;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
 
     Boolean isvalidate = true;
@@ -102,6 +110,11 @@ public class SingupFragment<postListener> extends Fragment {
         ErrorUsername = view.findViewById(R.id.TvErrorUsername);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        sharedPreferences = getActivity().getSharedPreferences("Singup", 0);
+// get editor to edit in file
+        editor = sharedPreferences.edit();
 
 
     }
@@ -201,6 +214,11 @@ public class SingupFragment<postListener> extends Fragment {
 
         });
 
+//        editor.putString("Username",EtUserName.getText().toString());
+//        editor.putString("Email",EtEmail.getText().toString());
+        editor.putBoolean("IsNewUser", false);
+        editor.commit();
+
 
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,23 +299,17 @@ public class SingupFragment<postListener> extends Fragment {
         return result;
     }
 
+//
+//    SharedPreferences pref = getActivity().getSharedPreferences("YOUR_PREF_NAME", Context.MODE_PRIVATE);
+//    SharedPreferences.Editor editor = pref.edit();
+//
 
-//    ValueEventListener postListener = new ValueEventListener() {
-//
-//        @Override
-//        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//            UserDetail userDetail = snapshot.getValue(UserDetail.class);
-//
-//
-//        }
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError error) {
-//
-//        }
-//    };
-//
-//    mPostReference.addValueEventListener(postListener);
+    /**
+     * Check login method will check user login status
+     * If false it will redirect user to login page
+     * Else do anything
+     * */
+
 
 }
 
