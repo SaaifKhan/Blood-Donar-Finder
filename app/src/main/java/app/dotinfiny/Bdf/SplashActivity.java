@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        new Handler(Looper.getMainLooper()).postAtTime(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 6000);
+        }, 3000);
 
 
     }

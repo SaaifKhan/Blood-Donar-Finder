@@ -1,8 +1,10 @@
 package app.dotinfiny.Bdf.UI.settingpofilefragment;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,15 +12,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,12 +35,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.R;
+import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.BloodGroupAdapter;
 import app.dotinfiny.Bdf.UI.settingpofilefragment.adapters.BloodGroupAdapterSettingProfile;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class SettingProfileFragment extends Fragment {
@@ -43,9 +60,18 @@ public class SettingProfileFragment extends Fragment {
     TextView tvErrorUname, tvErrorPhone;
     EditText Username, Phone;
     TextView Email, SubmitBtn;
-    SharedPreferences preferences;
     BloodGroupAdapterSettingProfile bloodGroupAdapterSettingProfile;
     private FirebaseAuth mAuth;
+    public static final String BLOOD_DONAR_FINDER = "blooddonarfinders";
+    ImageView gallerybtn;
+    CircleImageView circleImageView;
+    StorageReference mStorageRef;
+    Image image;
+    ProgressBar progressBar;
+    //StorageReference storageRef = storage.getReference();
+
+
+    //  int RequestCode = 100;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +79,7 @@ public class SettingProfileFragment extends Fragment {
         myRef = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
-
+        mStorageRef = FirebaseStorage.getInstance().getReference("users");
 
     }
 
@@ -63,35 +89,7 @@ public class SettingProfileFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-
-        myRef.child("users").child(userID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-
-                showData(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-        bloodGroupAdapterSettingProfile = new BloodGroupAdapterSettingProfile(selectedBloodGroup, getListOfBloodGroup(), new BloodGroupAdapterSettingProfile.CLickListener() {
-            @Override
-            public void onClick(int position) {
-                selectedBloodGroup = getListOfBloodGroup().get(position);
-                bloodGroupAdapterSettingProfile.setIsSelectedBlood(selectedBloodGroup);
-
-            }
-        });
-
-
         return inflater.inflate(R.layout.fragment_setting_profile, container, false);
-
 
     }
 
@@ -103,14 +101,22 @@ public class SettingProfileFragment extends Fragment {
 
         init(view);
         onClick();
+
+        myRef.child("users").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.GONE);
+                showData(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void onClick() {
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(bloodGroupAdapterSettingProfile);
-
-
         SubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,35 +137,81 @@ public class SettingProfileFragment extends Fragment {
                     SetErrorMessage(tvErrorUname, Username);
                 }
             }
+
+
         });
+
+
+        gallerybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ImagePicker.create(SettingProfileFragment.this)
+                        .start();
+
+
+            }
+
+        });
+
+
+    }
+
+    private void uploadImage() {
+        if (image != null) {
+            final ProgressDialog progressDialog = new ProgressDialog(getContext());
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = mStorageRef.child("images/" + FirebaseAuth.getInstance().getUid() + "/");
+            ref.putFile(image.getUri())
+                    .addOnSuccessListener(taskSnapshot -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                // getting image uri and converting into string
+                                Uri downloadUrl = uri;
+                                String fileUrl = downloadUrl.toString();
+                                myRef.child("users").child(FirebaseAuth.getInstance().getUid()).child("image").setValue(fileUrl);
+                            }
+                        });
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getActivity(), "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                    });
+        }
 
     }
 
     private void HitSubmit(String name, String PhoneNumber, String Email, String bloodGroup) {
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Updating...");
+        progressDialog.show();
         HashMap<String, String> updatedValue = new HashMap<>();
         updatedValue.put("uid", userID);
         updatedValue.put("UserName", name);
         updatedValue.put("UserPhone", PhoneNumber);
         updatedValue.put("UserEmail", Email);
         updatedValue.put("BloodGroup", bloodGroup);
-        myRef.child("users").child(userID).setValue(updatedValue).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-                boolean newUser = preferences.getBoolean("IsNewUser", false);
-
-                if (newUser) {
-                    Navigation.findNavController(getView()).navigate(R.id.action_settingProfileFragment_to_homeFragment);
-
-
-                } else {
-
-                }
-
-
-                43
-            }
+        myRef.child("users").child(userID).setValue(updatedValue).addOnSuccessListener(aVoid -> {
+            progressDialog.dismiss();
+            Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
+            SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(Constants.PREFNAME, MODE_PRIVATE);
+            preferences.edit().putBoolean(Constants.ISNEWUSER, false).apply();
         });
     }
 
@@ -173,7 +225,18 @@ public class SettingProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         tvErrorPhone = view.findViewById(R.id.tvErrorPhone_profilesetting);
         tvErrorUname = view.findViewById(R.id.TvErrorUsername_profilesetting);
-
+        gallerybtn = view.findViewById(R.id.ImageSelection);
+        circleImageView = view.findViewById(R.id.SettingProfileFragmentPicture);
+        progressBar = view.findViewById(R.id.progress_bar);
+        bloodGroupAdapterSettingProfile = new BloodGroupAdapterSettingProfile(getListOfBloodGroup(), new BloodGroupAdapterSettingProfile.CLickListener() {
+            @Override
+            public void onClick(int position) {
+                selectedBloodGroup = getListOfBloodGroup().get(position);
+                bloodGroupAdapterSettingProfile.setIsSelectedBlood(selectedBloodGroup);
+                bloodGroupAdapterSettingProfile.notifyDataSetChanged();
+            }
+        });
+        recyclerView.setAdapter(bloodGroupAdapterSettingProfile);
 
     }
 
@@ -188,13 +251,26 @@ public class SettingProfileFragment extends Fragment {
     }
 
     private void showData(DataSnapshot dataSnapshot) {
-        try {
 
+
+        try {
+//            final ProgressDialog progressDialog = new ProgressDialog(getContext());
+//            progressDialog.setTitle("Data getting..");
+//            progressDialog.show();
             String Uid = dataSnapshot.child("uid").getValue(String.class);
             String userEmailfromDB = dataSnapshot.child("UserEmail").getValue(String.class);
             String usernameFromDB = dataSnapshot.child("UserName").getValue(String.class);
             String userPhoneFromDB = dataSnapshot.child("UserPhone").getValue(String.class);
             String bloodgroup = dataSnapshot.child("BloodGroup").getValue(String.class);
+
+            if (dataSnapshot.hasChild("image")) {
+                String imageUrl = dataSnapshot.child("image").getValue(String.class);
+                Glide.with(getActivity())
+                        .load(imageUrl)
+                        //.placeholder()
+                        .into(circleImageView);
+            }
+
 
             selectedBloodGroup = bloodgroup;
             bloodGroupAdapterSettingProfile.setIsSelectedBlood(selectedBloodGroup);
@@ -254,7 +330,55 @@ public class SettingProfileFragment extends Fragment {
         return bloodGroups;
     }
 
+//    @Override
+//    public void onActivityResult(int requestCode, final int resultCode, Intent data) {
+//        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+//            // Get a list of picked images
+//            // or get a single image only
+//            Image image = ImagePicker.getFirstImageOrNull(data);
+//            if (image != null) {
+//                Glide.with(getActivity())
+//                        .load(image.getUri())
+//                        .override(300, 200)
+//                        .into(circleImageView);
+//            } else {
+//
+//            }
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            // Get a list of picked images
+            // or get a single image only
+            image = ImagePicker.getFirstImageOrNull(data);
+            if (image != null) {
+
+                Glide.with(getActivity())
+                        .load(image.getUri())
+                        .override(300, 200)
+                        .into(circleImageView);
+                uploadImage();
+            } else {
+
+            }
+        }
+    }
+
+
+//    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//        String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+//        DatabaseReference ref = FirebaseDatabase.getInstance()
+//                .getReference(BLOOD_DONAR_FINDER)
+//                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                .child("imageUrl");
+//        ref.setValue(imageEncoded);
 }
 
 

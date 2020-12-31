@@ -40,11 +40,19 @@
     <fragment
         android:id="@+id/profileDetail"
         android:name="app.dotinfiny.Bdf.UI.profiledetail.ProfileDetail"
-        android:label="ProfileDetail" />
+        android:label="ProfileDetail">
+        <action
+            android:id="@+id/action_profileDetail_to_settingProfileFragment"
+            app:destination="@id/settingProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="app.dotinfiny.Bdf.UI.profilefragment.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_settingProfileFragment"
+            app:destination="@id/settingProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingProfileFragment"
         android:name="app.dotinfiny.Bdf.UI.settingpofilefragment.SettingProfileFragment"

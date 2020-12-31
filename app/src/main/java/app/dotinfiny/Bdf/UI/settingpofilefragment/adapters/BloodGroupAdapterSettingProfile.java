@@ -25,7 +25,7 @@ public class BloodGroupAdapterSettingProfile extends RecyclerView.Adapter<BloodG
     private String isSelectedBlood = null;
 
 
-    public BloodGroupAdapterSettingProfile(String isSelectBlood, List<String> BloodGroups, CLickListener bloodGroupcCLickListener) {
+    public BloodGroupAdapterSettingProfile(List<String> BloodGroups, CLickListener bloodGroupcCLickListener) {
         //  this.isSelectedBlood = isSelectBlood;
         BloodGroupSettingClickListener = bloodGroupcCLickListener;
         BloodGroupAdapterSettingProfile.BloodGroups = BloodGroups;
@@ -47,10 +47,24 @@ public class BloodGroupAdapterSettingProfile extends RecyclerView.Adapter<BloodG
 
         if (isSelectedBlood != null) {
             if (BloodGroups.get(position).equalsIgnoreCase(isSelectedBlood)) {
-                holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
-                int bgColor1 = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
-                holder.bloodGroupsSettingProfile.setTextColor(bgColor1);
-                selectedTextView = holder.bloodGroupsSettingProfile;
+                if (selectedTextView != null) {
+                    selectedTextView.setBackgroundResource(R.drawable.circleoutline);
+                    int bgColor = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorPrimaryDark);
+                    selectedTextView.setTextColor(bgColor);
+
+
+                    holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
+                    int bgColor1 = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
+                    holder.bloodGroupsSettingProfile.setTextColor(bgColor1);
+                    selectedTextView = holder.bloodGroupsSettingProfile;
+
+                } else {
+                    holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
+                    int bgColor1 = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
+                    holder.bloodGroupsSettingProfile.setTextColor(bgColor1);
+                    selectedTextView = holder.bloodGroupsSettingProfile;
+
+                }
             }
         }
 

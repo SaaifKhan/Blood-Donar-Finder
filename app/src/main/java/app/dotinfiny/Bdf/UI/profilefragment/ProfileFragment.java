@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -24,6 +25,7 @@ public class ProfileFragment extends Fragment {
     ProfileViewPagerAdapter profileViewPagerAdapter;
     TabLayout tabLayoutmyProfile;
     ImageView BackButtonmyProfile;
+    ImageView SetProfilebtn;
 
 
     @Override
@@ -52,12 +54,19 @@ public class ProfileFragment extends Fragment {
     }
 
     private void clickListener() {
+        SetProfilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_settingProfileFragment);
+            }
+        });
 
 
     }
 
     private void init(View view) {
 
+        SetProfilebtn = view.findViewById(R.id.SettingProfile);
         BackButtonmyProfile = view.findViewById(R.id.backBtn_myProfile);
         tabLayoutmyProfile = view.findViewById(R.id.tabs_myProfile);
         myViewPager2MyProfile = view.findViewById(R.id.view_pager_myprofile);

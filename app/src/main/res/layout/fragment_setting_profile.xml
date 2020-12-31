@@ -25,45 +25,53 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
-        android:id="@+id/relative2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/toolbar_myProfileSetting"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp">
+        android:id="@+id/RelativemainbodyProfilesetting"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/toolbar_myProfileSetting"
+        android:layout_centerHorizontal="true">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/SettingProfileFragmentPicture"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@drawable/ic_baseline_person"
-            app:civ_border_width="2dp"></de.hdodenhof.circleimageview.CircleImageView>
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp">
 
-        <TextView
-            android:id="@+id/bloodGroupProfileDetail"
-            android:layout_width="25dp"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/SettingProfileFragmentPicture"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/ic_baseline_person"
+                app:civ_border_width="2dp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/ic_baseline_add"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:padding="1dp"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:visibility="visible"
-            app:tint="@android:color/black" />
-    </RelativeLayout>
+            android:layout_alignParentBottom="true">
 
+
+            <ImageView
+                android:id="@+id/ImageSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_add_a_photo_24" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative2">
+        android:layout_below="@+id/RelativemainbodyProfilesetting">
 
         <RelativeLayout
             android:id="@+id/Relative3MainBody"
@@ -237,6 +245,14 @@
         </RelativeLayout>
 
     </ScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:progressTint="@android:color/black" />
 
 
 </RelativeLayout>

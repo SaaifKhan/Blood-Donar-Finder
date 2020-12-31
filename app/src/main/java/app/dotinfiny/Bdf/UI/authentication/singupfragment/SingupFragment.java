@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -37,10 +38,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.MainActivity;
 import app.dotinfiny.Bdf.R;
 import app.dotinfiny.Bdf.UI.authentication.AuthenticationActivity;
 import app.dotinfiny.Bdf.UI.authentication.loginFragment.LoginFragment;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class SingupFragment<postListener> extends Fragment {
@@ -272,8 +276,13 @@ public class SingupFragment<postListener> extends Fragment {
                         databaseReference.child(uid).setValue(toMap(uid)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+
+
+                                SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(Constants.PREFNAME, MODE_PRIVATE);
                                 Toast.makeText(getActivity(), "Registered Successfully !!", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getActivity(), MainActivity.class));
+                                preferences.edit().putBoolean(Constants.ISNEWUSER, true).apply();
+
                             }
                         });
                     }

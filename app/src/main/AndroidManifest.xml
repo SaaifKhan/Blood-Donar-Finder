@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.dotinfiny.Bdf">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +22,6 @@
         <activity android:name=".UI.authentication.AuthenticationActivity">
 
         </activity>
-        <activity android:name=".UI.SplashActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data
