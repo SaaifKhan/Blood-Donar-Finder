@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -42,6 +43,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.R;
@@ -68,6 +70,8 @@ public class SettingProfileFragment extends Fragment {
     StorageReference mStorageRef;
     Image image;
     ProgressBar progressBar;
+    ImageView backbtn;
+
     //StorageReference storageRef = storage.getReference();
 
 
@@ -153,6 +157,13 @@ public class SettingProfileFragment extends Fragment {
             }
 
         });
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).popBackStack();
+
+            }
+        });
 
 
     }
@@ -201,13 +212,14 @@ public class SettingProfileFragment extends Fragment {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Updating...");
         progressDialog.show();
-        HashMap<String, String> updatedValue = new HashMap<>();
+        Map<String, Object> updatedValue = new HashMap<>();
         updatedValue.put("uid", userID);
         updatedValue.put("UserName", name);
         updatedValue.put("UserPhone", PhoneNumber);
         updatedValue.put("UserEmail", Email);
         updatedValue.put("BloodGroup", bloodGroup);
-        myRef.child("users").child(userID).setValue(updatedValue).addOnSuccessListener(aVoid -> {
+
+        myRef.child("users").child(userID).updateChildren(updatedValue).addOnSuccessListener(aVoid -> {
             progressDialog.dismiss();
             Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
             SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(Constants.PREFNAME, MODE_PRIVATE);
@@ -228,6 +240,7 @@ public class SettingProfileFragment extends Fragment {
         gallerybtn = view.findViewById(R.id.ImageSelection);
         circleImageView = view.findViewById(R.id.SettingProfileFragmentPicture);
         progressBar = view.findViewById(R.id.progress_bar);
+        backbtn = view.findViewById(R.id.back);
         bloodGroupAdapterSettingProfile = new BloodGroupAdapterSettingProfile(getListOfBloodGroup(), new BloodGroupAdapterSettingProfile.CLickListener() {
             @Override
             public void onClick(int position) {

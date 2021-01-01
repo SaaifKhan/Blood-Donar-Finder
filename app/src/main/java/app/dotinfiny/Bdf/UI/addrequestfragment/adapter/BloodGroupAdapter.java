@@ -1,7 +1,7 @@
 package app.dotinfiny.Bdf.UI.addrequestfragment.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,58 +11,89 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.security.AccessController;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.dotinfiny.Bdf.R;
-import app.dotinfiny.Bdf.UI.homeFragment.adapter.HomeProfileAdapter;
-import app.dotinfiny.Bdf.UI.profiledetail.childProfileDetails.ChildProfileAdapter;
+import app.dotinfiny.Bdf.UI.settingpofilefragment.adapters.BloodGroupAdapterSettingProfile;
 
-public class BloodGroupAdapter  extends RecyclerView.Adapter<BloodGroupAdapter.ViewHolder>{
-    CLickListener BloodGroupcCLickListener;
+public class BloodGroupAdapter extends RecyclerView.Adapter<BloodGroupAdapter.ViewHolder> {
+    static List<String> bloodGroups;
     private Context Context;
-    private TextView selectedTextview = null;
+    private final TextView selectedTextview = null;
+    BloodGroupAdapter.CLickListener BloodGroupSettingClickListener;
+    SharedPreferences preferences;
+    private Context context;
+    private String isSelectedBlood = null;
+    private TextView selectedTextView = null;
 
-    public BloodGroupAdapter(CLickListener bloodGroupcCLickListener) {
-        BloodGroupcCLickListener = bloodGroupcCLickListener;
+
+    public BloodGroupAdapter(List<String> BloodGroups, BloodGroupAdapter.CLickListener bloodGroupcCLickListener) {
+        BloodGroupSettingClickListener = bloodGroupcCLickListener;
+        bloodGroups = BloodGroups;
     }
 
-    public  interface CLickListener {
-        void onClick(int position);
-    }
 
     @NonNull
     @Override
     public BloodGroupAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemView = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.items_rows_blood_group,parent,false);
+                inflate(R.layout.items_rows_blood_group, parent, false);
         return new BloodGroupAdapter.ViewHolder(itemView);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BloodGroupAdapter.ViewHolder viewHolder,final int i) {
+    public void onBindViewHolder(@NonNull final BloodGroupAdapter.ViewHolder viewHolder, final int i) {
+        viewHolder.BloodGroups.setText(bloodGroups.get(i));
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(selectedTextview != null){
-                    selectedTextview.setBackgroundResource(R.drawable.circleoutline);
+        if (isSelectedBlood != null) {
+            if (bloodGroups.get(i).equalsIgnoreCase(isSelectedBlood)) {
+                if (selectedTextView != null) {
+                    selectedTextView.setBackgroundResource(R.drawable.circleoutline);
                     int bgColor = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorPrimaryDark);
-                    selectedTextview.setTextColor(bgColor);
+                    selectedTextView.setTextColor(bgColor);
+
 
                     viewHolder.BloodGroups.setBackgroundResource(R.drawable.circle);
                     int bgColor1 = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorWhite);
                     viewHolder.BloodGroups.setTextColor(bgColor1);
-                    selectedTextview = viewHolder.BloodGroups;
+                    selectedTextView = viewHolder.BloodGroups;
 
-                }else{
+                } else {
+                    viewHolder.BloodGroups.setBackgroundResource(R.drawable.circle);
+                    int bgColor1 = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorWhite);
+                    viewHolder.BloodGroups.setTextColor(bgColor1);
+                    selectedTextView = viewHolder.BloodGroups;
+
+                }
+            }
+        }
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTextView != null) {
+                    selectedTextView.setBackgroundResource(R.drawable.circleoutline);
+                    int bgColor = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorPrimaryDark);
+                    selectedTextView.setTextColor(bgColor);
+
+                    viewHolder.BloodGroups.setBackgroundResource(R.drawable.circle);
+                    int bgColor1 = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorWhite);
+                    viewHolder.BloodGroups.setTextColor(bgColor1);
+                    selectedTextView = viewHolder.BloodGroups;
+
+                } else {
                     viewHolder.BloodGroups.setBackgroundResource(R.drawable.circle);
                     int bgColor = ContextCompat.getColor(viewHolder.BloodGroups.getContext(), R.color.colorWhite);
                     viewHolder.BloodGroups.setTextColor(bgColor);
-                    selectedTextview = viewHolder.BloodGroups;
+                    selectedTextView = viewHolder.BloodGroups;
                 }
 
-                BloodGroupcCLickListener.onClick(i);
+                BloodGroupSettingClickListener.onClick(i);
+
+
+                // holder.bloodGroupsSettingProfile.setText(new ArrayList());
+
 
             }
 
@@ -73,9 +104,16 @@ public class BloodGroupAdapter  extends RecyclerView.Adapter<BloodGroupAdapter.V
 
     @Override
     public int getItemCount() {
-        return 8;
+        return bloodGroups.size();
     }
 
+    public void setIsSelectedBlood(String isSelectBlood) {
+        isSelectedBlood = isSelectBlood;
+    }
+
+    public interface CLickListener {
+        void onClick(int position);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView BloodGroups;
