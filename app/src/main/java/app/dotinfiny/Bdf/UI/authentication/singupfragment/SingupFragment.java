@@ -293,9 +293,9 @@ public class SingupFragment<postListener> extends Fragment {
     public Map<String, String> toMap(String id) {
         HashMap<String, String> result = new HashMap<>();
         result.put("uid", id);
-        result.put("UserName", EtUserName.getText().toString());
-        result.put("UserEmail", EtEmail.getText().toString());
-        result.put("UserPhone", EtPhone.getText().toString());
+        result.put(Constants.USER_NAME, EtUserName.getText().toString());
+        result.put(Constants.USER_EMAIL, EtEmail.getText().toString());
+        result.put(Constants.USER_PHONE, EtPhone.getText().toString());
 
 
         return result;

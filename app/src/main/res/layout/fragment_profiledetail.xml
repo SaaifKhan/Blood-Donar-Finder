@@ -247,6 +247,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/tabProfileDetail" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/view_pager" />
         </RelativeLayout>
 
     </ScrollView>

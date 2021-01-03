@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.R;
 import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.BloodGroupAdapter;
 import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.HospitalsAdapter;
@@ -62,6 +63,8 @@ public class RequestFragment extends Fragment {
     public String selectedBloodGroup = null;
     TextView TvLocation;
     RequestFragmentArgs args;
+    public String userName;
+    public String image;
 
 
     //  List<HospitalModel> hospitalModelList = new ArrayList<>();
@@ -164,11 +167,17 @@ public class RequestFragment extends Fragment {
         {
             try {
 
-                String usernameFromDB = dataSnapshot.child("UserName").getValue(String.class);
-                String bloodgroup = dataSnapshot.child("BloodGroup").getValue(String.class);
+                String usernameFromDB = dataSnapshot.child(Constants.USER_NAME).getValue(String.class);
+                String userImageFromDb = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
+                String UserBloodGroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
 
 
                 TvName.setText(usernameFromDB);
+                image = userImageFromDb;
+                userName = usernameFromDB;
+                selectedBloodGroup = UserBloodGroup;
+                BloodGroupOfDonar.setText(selectedBloodGroup);
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -179,13 +188,18 @@ public class RequestFragment extends Fragment {
 
     private void ShowData(DataSnapshot dataSnapshot) {
         try {
-            String userEmailfromDB = dataSnapshot.child("UserEmail").getValue(String.class);
-            String usernameFromDB = dataSnapshot.child("UserName").getValue(String.class);
-            String userPhoneFromDB = dataSnapshot.child("UserPhone").getValue(String.class);
-            selectedBloodGroup = dataSnapshot.child("BloodGroup").getValue(String.class);
+            String userEmailfromDB = dataSnapshot.child(Constants.USER_EMAIL).getValue(String.class);
+            String usernameFromDB = dataSnapshot.child(Constants.USER_NAME).getValue(String.class);
+            String userImageFromDb = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
+            String bloodGroupFromdb = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
+            selectedBloodGroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
 
             TvName.setText(usernameFromDB);
+            userName = usernameFromDB;
+            selectedBloodGroup = bloodGroupFromdb;
             BloodGroupOfDonar.setText(selectedBloodGroup);
+            image = userImageFromDb;
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -278,13 +292,16 @@ public class RequestFragment extends Fragment {
         progressDialog.show();
         Map<String, Object> submitValue = new HashMap<>();
         // String uid = task.getResult().getUser().getUid();
-        submitValue.put("id", userID);
-        submitValue.put("detail", Details);
-        submitValue.put("location", Hospitals);
-        submitValue.put("hospital", Location);
-        submitValue.put("bloodgroup", BloodGroup);
+        submitValue.put(Constants.ID, userID);
+        submitValue.put(Constants.DETAILS, Details);
+        submitValue.put(Constants.HOSPITAL, Hospitals);
+        submitValue.put(Constants.AREA, Location);
+        submitValue.put(Constants.BLOOD_GROUP, BloodGroup);
+        submitValue.put(Constants.REQUEST_TYPE, "1"); //RequestForBlood
+        submitValue.put(Constants.IMAGE, image);
+        submitValue.put(Constants.USER_NAME, userName);
 
-        myRefRequest.child("BloodRequest").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {
+        myRefRequest.child("BloodRequests").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {
             progressDialog.dismiss();
             Toast.makeText(getActivity(), "submitted", Toast.LENGTH_SHORT).show();
 //                SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(Constants.PREFNAME, MODE_PRIVATE);
@@ -300,14 +317,17 @@ public class RequestFragment extends Fragment {
         progressDialog.show();
         Map<String, Object> submitValue = new HashMap<>();
         // String uid = task.getResult().getUser().getUid();
-        submitValue.put("id", userID);
-        submitValue.put("detail", detail);
-        submitValue.put("location", location);
-        submitValue.put("hospital", hospital);
-        submitValue.put("bloodgroup", BloodGroup);
+        submitValue.put(Constants.ID, userID);
+        submitValue.put(Constants.DETAILS, detail);
+        submitValue.put(Constants.AREA, location);
+        submitValue.put(Constants.HOSPITAL, hospital);
+        submitValue.put(Constants.BLOOD_GROUP, BloodGroup);
+        submitValue.put(Constants.REQUEST_TYPE, "0");//donar
+        submitValue.put(Constants.USER_NAME, userName);
+        submitValue.put("image", image);
 
 
-        myRefRequest.child("BloodDonar").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {
+        myRefRequest.child("BloodRequests").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {
             progressDialog.dismiss();
             Toast.makeText(getActivity(), "submitted", Toast.LENGTH_SHORT).show();
 //                SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(Constants.PREFNAME, MODE_PRIVATE);
@@ -390,6 +410,11 @@ public class RequestFragment extends Fragment {
         list.add(new HospitalModel(2, "Aga khan"));
         list.add(new HospitalModel(2, "Aga khan"));
         list.add(new HospitalModel(3, "abc"));
+        list.add(new HospitalModel(5, "abcd1"));
+        list.add(new HospitalModel(6, "abcd2"));
+        list.add(new HospitalModel(7, "abcd3"));
+        list.add(new HospitalModel(8, "Liaquat National"));
+
 
         return list;
     }

@@ -1,7 +1,6 @@
 package app.dotinfiny.Bdf.UI.settingpofilefragment.adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ public class BloodGroupAdapterSettingProfile extends RecyclerView.Adapter<BloodG
 
     static List<String> BloodGroups;
     CLickListener BloodGroupSettingClickListener;
-    SharedPreferences preferences;
     private Context context;
     private TextView selectedTextView = null;
     private String isSelectedBlood = null;
@@ -68,33 +66,28 @@ public class BloodGroupAdapterSettingProfile extends RecyclerView.Adapter<BloodG
             }
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedTextView != null) {
-                    selectedTextView.setBackgroundResource(R.drawable.circleoutline);
-                    int bgColor = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorPrimaryDark);
-                    selectedTextView.setTextColor(bgColor);
+        holder.itemView.setOnClickListener(v -> {
+            if (selectedTextView != null) {
+                selectedTextView.setBackgroundResource(R.drawable.circleoutline);
+                int bgColor = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorPrimaryDark);
+                selectedTextView.setTextColor(bgColor);
 
-                    holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
-                    int bgColor1 = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
-                    holder.bloodGroupsSettingProfile.setTextColor(bgColor1);
-                    selectedTextView = holder.bloodGroupsSettingProfile;
+                holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
+                int bgColor1 = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
+                holder.bloodGroupsSettingProfile.setTextColor(bgColor1);
+                selectedTextView = holder.bloodGroupsSettingProfile;
 
-                } else {
-                    holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
-                    int bgColor = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
-                    holder.bloodGroupsSettingProfile.setTextColor(bgColor);
-                    selectedTextView = holder.bloodGroupsSettingProfile;
-                }
-
-                BloodGroupSettingClickListener.onClick(position);
-
-
-                // holder.bloodGroupsSettingProfile.setText(new ArrayList());
-
-
+            } else {
+                holder.bloodGroupsSettingProfile.setBackgroundResource(R.drawable.circle);
+                int bgColor = ContextCompat.getColor(holder.bloodGroupsSettingProfile.getContext(), R.color.colorWhite);
+                holder.bloodGroupsSettingProfile.setTextColor(bgColor);
+                selectedTextView = holder.bloodGroupsSettingProfile;
             }
+
+            BloodGroupSettingClickListener.onClick(position);
+
+
+            // holder.bloodGroupsSettingProfile.setText(new ArrayList());
 
 
         });

@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -101,13 +102,13 @@ public class ProfileFragment extends Fragment {
 //            progressDialog.setTitle("Data getting..");
 //            progressDialog.show();
             String Uid = dataSnapshot.child("uid").getValue(String.class);
-            String userEmailfromDB = dataSnapshot.child("UserEmail").getValue(String.class);
-            String usernameFromDB = dataSnapshot.child("UserName").getValue(String.class);
-            String userPhoneFromDB = dataSnapshot.child("UserPhone").getValue(String.class);
-            String bloodgroup = dataSnapshot.child("BloodGroup").getValue(String.class);
+            String userEmailfromDB = dataSnapshot.child(Constants.USER_EMAIL).getValue(String.class);
+            String usernameFromDB = dataSnapshot.child(Constants.USER_NAME).getValue(String.class);
+            String userPhoneFromDB = dataSnapshot.child(Constants.USER_PHONE).getValue(String.class);
+            String bloodgroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
 
-            if (dataSnapshot.hasChild("image")) {
-                String imageUrl = dataSnapshot.child("image").getValue(String.class);
+            if (dataSnapshot.hasChild(Constants.IMAGE)) {
+                String imageUrl = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
                 Glide.with(getActivity())
                         .load(imageUrl)
                         // .thumbnail(0.25f)
@@ -126,11 +127,8 @@ public class ProfileFragment extends Fragment {
 
 
     private void clickListener() {
-        SetProfilebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_settingProfileFragment);
-            }
+        SetProfilebtn.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_settingProfileFragment);
         });
         BackButtonmyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,4 +170,7 @@ public class ProfileFragment extends Fragment {
         tabLayoutMediator.attach();
 
     }
+
+
 }
+

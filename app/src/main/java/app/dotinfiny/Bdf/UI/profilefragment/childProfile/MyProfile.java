@@ -7,11 +7,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,8 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import app.dotinfiny.Bdf.R;
-import app.dotinfiny.Bdf.UI.profiledetail.childProfileDetails.ChildProfileAdapter;
+
+import static android.content.ContentValues.TAG;
 
 
 public class MyProfile extends Fragment {
@@ -29,6 +32,7 @@ public class MyProfile extends Fragment {
     MyProfileAdapter myProfileAdapter;
     public DatabaseReference myRef;
     public String userID;
+    ArrayList<String> details = new ArrayList<>();
 
 
     @Override
@@ -38,7 +42,22 @@ public class MyProfile extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
 
+        details.add("A");
+        details.add("A");
+        details.add("B");
+        details.add("O");
+        details.add("O");
+        details.add("AB");
+        details.add("AB");
+
+        for (String str : details) {
+
+            Log.d(TAG, "onCreate: " + str);
+        }
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -112,4 +131,19 @@ public class MyProfile extends Fragment {
         recyclerViewMyProfile.setAdapter(myProfileAdapter);
         myProfileAdapter.notifyDataSetChanged();
     }
+
+//    private void arrayLog(){
+//        Log.d(TAG, "arrayLog: "+ getDetails());
+////        for (i= 0; array.lenght; i++) {
+////            //
+////            Log.d(TAG, "arrayLog: "+);
+////        }
+////
+//        }
+//
 }
+    
+    
+    
+    
+

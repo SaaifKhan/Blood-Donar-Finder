@@ -47,7 +47,6 @@ import java.util.Map;
 
 import app.dotinfiny.Bdf.Constants;
 import app.dotinfiny.Bdf.R;
-import app.dotinfiny.Bdf.UI.addrequestfragment.adapter.BloodGroupAdapter;
 import app.dotinfiny.Bdf.UI.settingpofilefragment.adapters.BloodGroupAdapterSettingProfile;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -90,7 +89,6 @@ public class SettingProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_setting_profile, container, false);
@@ -213,11 +211,11 @@ public class SettingProfileFragment extends Fragment {
         progressDialog.setTitle("Updating...");
         progressDialog.show();
         Map<String, Object> updatedValue = new HashMap<>();
-        updatedValue.put("uid", userID);
-        updatedValue.put("UserName", name);
-        updatedValue.put("UserPhone", PhoneNumber);
-        updatedValue.put("UserEmail", Email);
-        updatedValue.put("BloodGroup", bloodGroup);
+        updatedValue.put(Constants.ID, userID);
+        updatedValue.put(Constants.USER_NAME, name);
+        updatedValue.put(Constants.USER_PHONE, PhoneNumber);
+        updatedValue.put(Constants.USER_EMAIL, Email);
+        updatedValue.put(Constants.BLOOD_GROUP, bloodGroup);
 
         myRef.child("users").child(userID).updateChildren(updatedValue).addOnSuccessListener(aVoid -> {
             progressDialog.dismiss();
@@ -270,14 +268,14 @@ public class SettingProfileFragment extends Fragment {
 //            final ProgressDialog progressDialog = new ProgressDialog(getContext());
 //            progressDialog.setTitle("Data getting..");
 //            progressDialog.show();
-            String Uid = dataSnapshot.child("uid").getValue(String.class);
-            String userEmailfromDB = dataSnapshot.child("UserEmail").getValue(String.class);
-            String usernameFromDB = dataSnapshot.child("UserName").getValue(String.class);
-            String userPhoneFromDB = dataSnapshot.child("UserPhone").getValue(String.class);
-            String bloodgroup = dataSnapshot.child("BloodGroup").getValue(String.class);
+            String Uid = dataSnapshot.child(Constants.ID).getValue(String.class);
+            String userEmailfromDB = dataSnapshot.child(Constants.USER_EMAIL).getValue(String.class);
+            String usernameFromDB = dataSnapshot.child(Constants.USER_NAME).getValue(String.class);
+            String userPhoneFromDB = dataSnapshot.child(Constants.USER_PHONE).getValue(String.class);
+            String bloodgroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
 
-            if (dataSnapshot.hasChild("image")) {
-                String imageUrl = dataSnapshot.child("image").getValue(String.class);
+            if (dataSnapshot.hasChild(Constants.IMAGE)) {
+                String imageUrl = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
                 Glide.with(getActivity())
                         .load(imageUrl)
                         //.placeholder()
