@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         app:lottie_autoPlay="true"
-        app:lottie_colorFilter="@android:color/black"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loder" />
 

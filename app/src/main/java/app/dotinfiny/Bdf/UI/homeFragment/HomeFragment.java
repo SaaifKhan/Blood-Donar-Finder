@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +39,7 @@ public class HomeFragment extends Fragment {
     public DatabaseReference myRef;
     public String userId;
     List<RequestsModel> requestsModelList = new ArrayList<>();
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,8 @@ public class HomeFragment extends Fragment {
         myRef.child("BloodRequests").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot ds : snapshot.getChildren()) {
-//                    RequestsModel model =
                     for (DataSnapshot child : ds.getChildren()) {
                         Log.d(TAG, "onDataChange: " + child.getValue());
                         String id = child.child("id").getValue().toString();
@@ -70,10 +73,15 @@ public class HomeFragment extends Fragment {
                 }
                 homeProfileAdapter.notifyDataSetChanged();
 
+                progressBar.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -112,6 +120,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(final View view) {
+        progressBar = view.findViewById(R.id.ProgressBarHome);
         recyclerView = view.findViewById(R.id.item_recyclerView);
         homeProfileAdapter = new HomeProfileAdapter(requestsModelList, new HomeProfileAdapter.CLickListener() {
             @Override

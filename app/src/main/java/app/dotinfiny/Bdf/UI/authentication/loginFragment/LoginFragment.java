@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import app.dotinfiny.Bdf.MainActivity;
 import app.dotinfiny.Bdf.R;
 import app.dotinfiny.Bdf.UI.authentication.AuthenticationActivity;
+import app.dotinfiny.Bdf.UI.settingpofilefragment.SettingProfileFragment;
 
 
 public class LoginFragment extends Fragment {
@@ -209,7 +210,7 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(getActivity(), "Login Successfully !!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        startActivity(new Intent(getActivity(), SettingProfileFragment.class));
                         getActivity().finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
