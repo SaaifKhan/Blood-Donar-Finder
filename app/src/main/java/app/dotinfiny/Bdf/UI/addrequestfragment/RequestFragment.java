@@ -65,6 +65,7 @@ public class RequestFragment extends Fragment {
     RequestFragmentArgs args;
     public String userName;
     public String image;
+    public String Phone;
 
 
     //  List<HospitalModel> hospitalModelList = new ArrayList<>();
@@ -170,6 +171,7 @@ public class RequestFragment extends Fragment {
                 String usernameFromDB = dataSnapshot.child(Constants.USER_NAME).getValue(String.class);
                 String userImageFromDb = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
                 String UserBloodGroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
+                String userPhoneFromDb = dataSnapshot.child(Constants.USER_PHONE).getValue(String.class);
 
 
                 TvName.setText(usernameFromDB);
@@ -177,6 +179,7 @@ public class RequestFragment extends Fragment {
                 userName = usernameFromDB;
                 selectedBloodGroup = UserBloodGroup;
                 BloodGroupOfDonar.setText(selectedBloodGroup);
+                Phone = userPhoneFromDb;
 
 
             } catch (Exception e) {
@@ -193,12 +196,14 @@ public class RequestFragment extends Fragment {
             String userImageFromDb = dataSnapshot.child(Constants.IMAGE).getValue(String.class);
             String bloodGroupFromdb = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
             selectedBloodGroup = dataSnapshot.child(Constants.BLOOD_GROUP).getValue(String.class);
+            String userPhoneFromDb = dataSnapshot.child(Constants.USER_PHONE).getValue(String.class);
 
             TvName.setText(usernameFromDB);
             userName = usernameFromDB;
             selectedBloodGroup = bloodGroupFromdb;
             BloodGroupOfDonar.setText(selectedBloodGroup);
             image = userImageFromDb;
+            Phone = userPhoneFromDb;
 
 
         } catch (Exception e) {
@@ -300,6 +305,7 @@ public class RequestFragment extends Fragment {
         submitValue.put(Constants.REQUEST_TYPE, "1"); //RequestForBlood
         submitValue.put(Constants.IMAGE, image);
         submitValue.put(Constants.USER_NAME, userName);
+        submitValue.put(Constants.USER_PHONE, Phone);
 
         myRefRequest.child("BloodRequests").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {
             progressDialog.dismiss();
@@ -325,6 +331,7 @@ public class RequestFragment extends Fragment {
         submitValue.put(Constants.REQUEST_TYPE, "0");//donar
         submitValue.put(Constants.USER_NAME, userName);
         submitValue.put("image", image);
+        submitValue.put(Constants.USER_PHONE, Phone);
 
 
         myRefRequest.child("BloodRequests").child(userID).child(myRefRequest.push().getKey()).setValue(submitValue).addOnSuccessListener(aVoid -> {

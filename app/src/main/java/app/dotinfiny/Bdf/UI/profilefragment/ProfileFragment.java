@@ -158,10 +158,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 if (position == 0) {
-                    tab.setText("Blood Request");
+                    tab.setText("Donar Request");
 
                 } else if (position > 0) {
-                    tab.setText("Donar Request");
+                    tab.setText("Blood Request");
 
                 }
 

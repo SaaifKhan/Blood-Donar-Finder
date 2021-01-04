@@ -16,6 +16,7 @@
         <action
             android:id="@+id/action_homeFragment_to_settingProfileFragment"
             app:destination="@id/settingProfileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/addRequestFragment"
@@ -44,6 +45,10 @@
         <action
             android:id="@+id/action_profileDetail_to_settingProfileFragment"
             app:destination="@id/settingProfileFragment" />
+        <argument
+            android:name="RequestModelData"
+            app:argType="app.dotinfiny.Bdf.UI.homeFragment.model.RequestsModel"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

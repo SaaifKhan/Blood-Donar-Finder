@@ -22,11 +22,24 @@
             app:tint="@android:color/black" />
 
         <ImageView
+            android:id="@+id/UserPhoneDialler"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_baseline_call"
             app:tint="@android:color/black" />
+
+
+        <ImageView
+            android:id="@+id/Sms"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_baseline_sms_24"
+            app:tint="@android:color/black" />
+
+
     </RelativeLayout>
 
 

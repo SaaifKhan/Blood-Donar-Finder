@@ -37,11 +37,13 @@ public class ChildProfileDetail extends Fragment {
     RecyclerView recyclerView;
     ChildProfileAdapter childProfileAdapter;
     int selectedPosition;
+    String selectedUserId;
     List<RequestsModel> requestsModelListDonar = new ArrayList<>();
     List<RequestsModel> requestsModelListRequest = new ArrayList<>();
 
-    public ChildProfileDetail(int position) {
+    public ChildProfileDetail(int position, String userId) {
         this.selectedPosition = position;
+        this.selectedUserId = userId;
     }
 
     @Override
@@ -54,35 +56,35 @@ public class ChildProfileDetail extends Fragment {
         myRef = FirebaseDatabase.getInstance().getReference();
 
 
-        myRef.child("BloodRequests").addValueEventListener(new ValueEventListener() {
+        myRef.child("BloodRequests").child(selectedUserId).addValueEventListener(new ValueEventListener() {
 
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-//                    RequestsModel model =
-                    for (DataSnapshot child : ds.getChildren()) {
-                        Log.d(TAG, "onDataChange: " + child.getValue());
-                        String id = child.child(Constants.ID).getValue().toString();
-                        String Details = child.child(Constants.DETAILS).getValue().toString();
-                        String Location = child.child(Constants.AREA).getValue().toString();
-                        String Hospital = child.child(Constants.HOSPITAL).getValue().toString();
-                        String bloodGroup = child.child(Constants.BLOOD_GROUP).getValue().toString();
-                        String requestType = child.child(Constants.REQUEST_TYPE).getValue().toString();
-                        String userName = child.child(Constants.USER_NAME).getValue().toString();
-                        String userImage = child.child(Constants.IMAGE).getValue(String.class);
-                        if (requestType.equals("0")) {
-                            requestsModelListDonar.add(new RequestsModel(id, Details, Location, Hospital, bloodGroup, requestType, userName, userImage));
-                        } else {
-                            requestsModelListRequest.add(new RequestsModel(id, Details, Location, Hospital, bloodGroup, requestType, userName, userImage));
-                        }
-                        childProfileAdapter.notifyDataSetChanged();
+
+                    Log.d(TAG, "onDataChange: " + ds.getValue());
+                    String id = ds.child(Constants.ID).getValue().toString();
+                    String Details = ds.child(Constants.DETAILS).getValue().toString();
+                    String Location = ds.child(Constants.AREA).getValue().toString();
+                    String Hospital = ds.child(Constants.HOSPITAL).getValue().toString();
+                    String bloodGroup = ds.child(Constants.BLOOD_GROUP).getValue().toString();
+                    String requestType = ds.child(Constants.REQUEST_TYPE).getValue().toString();
+                    String userName = ds.child(Constants.USER_NAME).getValue().toString();
+                    String userImage = ds.child(Constants.IMAGE).getValue(String.class);
+                    String userPhone = ds.child(Constants.USER_PHONE).getValue(String.class);
+                    if (requestType.equals("0")) {
+                        requestsModelListDonar.add(new RequestsModel(id, Details, Location, Hospital, bloodGroup, requestType, userName, userImage, userPhone));
+                    } else {
+                        requestsModelListRequest.add(new RequestsModel(id, Details, Location, Hospital, bloodGroup, requestType, userName, userImage, userPhone));
                     }
-                    Log.d("Data", "" + ds.getChildrenCount());
-
-
                 }
+                // Log.d("Data", "" + ds.getChildrenCount());
+                childProfileAdapter.notifyDataSetChanged();
+
+
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

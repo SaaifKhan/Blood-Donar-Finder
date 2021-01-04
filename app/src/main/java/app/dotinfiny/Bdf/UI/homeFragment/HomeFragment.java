@@ -63,11 +63,13 @@ public class HomeFragment extends Fragment {
                         String RequestType = child.child(Constants.REQUEST_TYPE).getValue(String.class);
                         String usernameFromDB = child.child(Constants.USER_NAME).getValue(String.class);
                         String userImage = child.child(Constants.IMAGE).getValue(String.class);
-                        requestsModelList.add(new RequestsModel(id, Details, Location, Hospital, BloodGroup, RequestType, usernameFromDB, userImage));
-                        homeProfileAdapter.notifyDataSetChanged();
+                        String userPhone = child.child(Constants.USER_PHONE).getValue(String.class);
+                        requestsModelList.add(new RequestsModel(id, Details, Location, Hospital, BloodGroup, RequestType, usernameFromDB, userImage, userPhone));
                     }
                     Log.d("sa", "" + ds.getChildrenCount());
                 }
+                homeProfileAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -114,7 +116,8 @@ public class HomeFragment extends Fragment {
         homeProfileAdapter = new HomeProfileAdapter(requestsModelList, new HomeProfileAdapter.CLickListener() {
             @Override
             public void onClick(int position) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_profileDetail2);
+                RequestsModel model = requestsModelList.get(position);
+                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionHomeFragmentToProfileDetail2(model));
 
             }
         });

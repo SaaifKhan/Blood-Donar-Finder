@@ -8,16 +8,18 @@ import app.dotinfiny.Bdf.UI.profiledetail.childProfileDetails.ChildProfileDetail
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull Fragment fragmentManager) {
-        super(fragmentManager);
-    }
+    String userId;
 
+    public ViewPagerAdapter(@NonNull Fragment fragmentManager, String userId) {
+        super(fragmentManager);
+        this.userId = userId;
+    }
 
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new ChildProfileDetail(position);
+        return new ChildProfileDetail(position, userId);
     }
 
     @Override

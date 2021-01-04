@@ -16,7 +16,7 @@ public class ProfileViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new MyProfile();
+        return new MyProfile(position);
     }
 
     @Override
