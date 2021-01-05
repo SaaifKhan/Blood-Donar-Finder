@@ -117,8 +117,7 @@ public class ProfileDetail extends Fragment {
     private void init(View view) {
         smsDialler = view.findViewById(R.id.Sms);
         PhoneDialler = view.findViewById(R.id.UserPhoneDialler);
-        totalNumofDonation = view.findViewById(R.id.tvDonorProfileDetail);
-        totalNumOfRequestBlood = view.findViewById(R.id.tvdonateProfileDetail);
+
         tvBloodGroup = view.findViewById(R.id.bloodgrpTv);
         Name = view.findViewById(R.id.Name);
         circleImageView = view.findViewById(R.id.profileImgProfileDetails);

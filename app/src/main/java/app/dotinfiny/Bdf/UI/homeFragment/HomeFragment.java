@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment {
         myRef = FirebaseDatabase.getInstance().getReference();
 
 
+
         //
         myRef.child("BloodRequests").addValueEventListener(new ValueEventListener() {
             @Override
@@ -71,6 +72,7 @@ public class HomeFragment extends Fragment {
                     }
                     Log.d("sa", "" + ds.getChildrenCount());
                 }
+
                 homeProfileAdapter.notifyDataSetChanged();
 
                 progressBar.setVisibility(View.GONE);
@@ -110,6 +112,13 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         init(view);
         clickListener();
+
+        if (requestsModelList.size() > 0) {
+            progressBar.setVisibility(View.GONE);
+        } else {
+
+        }
+
     }
 
     private void clickListener() {

@@ -23,9 +23,12 @@
                 android:layout_marginTop="8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
+                android:layout_marginBottom="60dp"
                 tools:listitem="@layout/item_cards_rows" />
 
+
         </RelativeLayout>
+
 
     <ProgressBar
         android:id="@+id/ProgressBarHome"

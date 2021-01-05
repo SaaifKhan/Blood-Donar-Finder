@@ -75,69 +75,6 @@
                 android:visibility="visible">
 
 
-                <LinearLayout
-                    android:id="@+id/LinearDonate_myProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/relative2"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/tvdonate_myProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/days_one"
-                        android:gravity="center"
-                        android:text="50"
-                        android:textColor="@android:color/black"
-                        android:textSize="23sp" />
-
-                    <TextView
-                        android:id="@+id/tvNumofDonate_myProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/montserrat_alternates"
-                        android:text=" Total Donar Request"
-                        android:textSize="8sp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/linearDonar_myProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/relative2"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-
-                    <TextView
-                        android:id="@+id/tvDonor_myProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/days_one"
-                        android:text="2"
-                        android:textColor="@android:color/black"
-                        android:textSize="23sp" />
-
-
-                    <TextView
-                        android:id="@+id/NumofDonor_myProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_alternates"
-                        android:text="Total Blood Request"
-                        android:textSize="8sp" />
-                </LinearLayout>
-
                 <RelativeLayout
                     android:id="@+id/relative2"
                     android:layout_width="100dp"
