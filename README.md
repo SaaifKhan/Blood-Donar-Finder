@@ -15,13 +15,13 @@ our app will help them out to find a donor..
 ● Android Studio
 
 #Features:
-:point_right:Login / Signup
-:point_right: Profile
-:point_right: Become a Donor
-:point_right: Find a Donor
-:point_right: Request Donor
-:point_right: Google Maps API
-:point_right: Sharing Contact Details on Request Approval.
+:point_right:Login / Signup (<-- two spaces)
+:point_right: Profile(<-- two spaces)
+:point_right: Become a Donor(<-- two spaces)
+:point_right: Find a Donor(<-- two spaces)
+:point_right: Request Donor(<-- two spaces)
+:point_right: Google Maps API(<-- two spaces)
+:point_right: Sharing Contact Details on Request Approval.(<-- two spaces)
 
 
 Blood Donar Finder is 100% open source and free forever!!
